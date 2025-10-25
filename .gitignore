@@ -8,4 +8,7 @@ venv
 
 # Pastas de saída
 outputs/
-qrcode_png/
+
+# Arquivos de saída
+*.json
+*.csv
