@@ -5,10 +5,12 @@ import pandas as pd # para trabalhar com DataFrames
 from datetime import datetime # para trabalhar com datas
 from config import output_folder
 from config import csv_folder
+from config import json_folder
 from config import back_color as default_back_color
 from config import fill_color as default_fill_color
 from config import border as default_border
 from config import box_size as default_box_size
+import json # para trabalhar com JSON
 
 #Criar uma classe para o Qrcode Generator
 class QrcodeGenerator:
@@ -22,10 +24,12 @@ class QrcodeGenerator:
         self.back_color = back_color if back_color is not None else default_back_color
         self.output_folder = output_folder
         self.csv_folder = csv_folder
-        self.png_path = os.path.join(self.output_folder, filename)
+        self.json_folder = json_folder
         self.df_path = os.path.join(csv_folder, "qrcode_data.csv")
+        self.json_path = os.path.join(json_folder, "qrcode_data.json")
         os.makedirs(self.output_folder, exist_ok=True)
         os.makedirs(self.csv_folder, exist_ok=True)
+        os.makedirs(self.json_folder, exist_ok=True)
 
     def criar_qrcode(self):    #função para criar o Qrcode
         """
@@ -50,7 +54,7 @@ class QrcodeGenerator:
             Gera e salva o QR code em um arquivo PNG.
             """
             img = self.criar_qrcode()
-            caminho = os.path.join(self.png_path)
+            caminho = os.path.join(self.output_folder, filename)
             img.save(caminho)
             print(f"✅ QR code salvo em: {caminho}")
             if mostrar:
@@ -80,4 +84,32 @@ class QrcodeGenerator:
             df_final = novo_df
 
         df_final.to_csv(self.df_path, index=False)
-        return novo_df
+        return novo_df 
+
+
+    def criar_json(self, caminho_arquivo: str):
+        """
+        Cria um JSON com os dados do QR code
+        """
+        dados = {
+            "SSID": self.ssid,
+            "Password": self.password,
+            "Security": self.security,
+            "arquivo": caminho_arquivo,
+            "data_criacao": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        }
+        
+        if os.path.exists(self.json_path):
+            with open(self.json_path, "r") as f:
+                dados_antigos = json.load(f)
+            if isinstance(dados_antigos, list):
+                dados_antigos.append(dados)
+                dados_final = dados_antigos
+            else:
+                dados_final = [dados_antigos, dados]
+        else:
+            dados_final = [dados]
+            
+        with open(self.json_path, "w") as f:
+            json.dump(dados_final, f, indent=2)
+        return dados_final

@@ -18,7 +18,13 @@ def main():
     
     # Criar DataFrame com os dados usando o caminho real
     df = generator.criar_dataframe(caminho_qr)
+    print("📊 DataFrame:")
     print(df)
+    
+    # Criar JSON com os dados usando o caminho real
+    json_data = generator.criar_json(caminho_qr)
+    print("📄 JSON:")
+    print(json_data)
 
 
 if __name__ == "__main__":
