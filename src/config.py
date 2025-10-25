@@ -6,5 +6,5 @@ border: float = 4
 fill_color: str = "black"
 back_color: str = "white"
 output_folder: str = "qrcode_png"
-csv_folder: str = "csv_files"
-json_folder: str = "json_files"
+csv_folder: str = "outputs/csv_files"
+json_folder: str = "outputs/json_files"
