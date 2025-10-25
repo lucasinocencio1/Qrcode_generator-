@@ -1,7 +1,7 @@
 import streamlit as st
 from dotenv import load_dotenv
-from qr_code_generator import QrcodeGenerator
-from export_handler import ExportHandler
+from src.qr_code_generator import QrcodeGenerator
+from src.export_handler import ExportHandler
 import os
 
 st.set_page_config(page_title="Gerador de QR Code Wi-Fi", page_icon="📶")
