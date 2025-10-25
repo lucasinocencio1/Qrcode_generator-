@@ -37,28 +37,28 @@ def salvar_qrcode(img):
    img.show() #mostrar o Qrcode na tela
 
 
-
-def main():
-    load_dotenv()
+#criamos uma pasta main para executar o programa
+# def main():
+#     load_dotenv()
     
-    # Configurações do WiFi
-    ssid = os.getenv("my_ssid", "Minha Rede Wifi") # Mudar para o SSID da rede WiFi (Usar .env para garantir segurança)
-    password = os.getenv("my_password", "123456") # Mudar para a senha da rede WiFi (Usar .env para garantir segurança)
-    security = os.getenv("my_security", "WPA") # Mudar para a segurança da rede WiFi (Usar .env para garantir segurança)
+#     # Configurações do WiFi
+#     ssid = os.getenv("my_ssid", "Minha Rede Wifi") # Mudar para o SSID da rede WiFi (Usar .env para garantir segurança)
+#     password = os.getenv("my_password", "123456") # Mudar para a senha da rede WiFi (Usar .env para garantir segurança)
+#     security = os.getenv("my_security", "WPA") # Mudar para a segurança da rede WiFi (Usar .env para garantir segurança)
     
-    # Configurações visuais do QR code
-    box_size = 10      # Tamanho dos quadrados
-    border = 4         # Espessura da borda
-    fill_color = "black"    # Cor dos quadrados
-    back_color = "white"    # Cor de fundo
+#     # Configurações visuais do QR code
+#     box_size = BOX_SIZE      # Tamanho dos quadrados
+#     border = BORDER         # Espessura da borda
+#     fill_color = FILL_COLOR    # Cor dos quadrados
+#     back_color = BACK_COLOR    # Cor de fundo
     
-    # Criar o Qrcode
-    img = criar_qrcode(ssid, password, security, box_size, border, fill_color, back_color)
+#     # Criar o Qrcode
+#     img = criar_qrcode(ssid, password, security, box_size, border, fill_color, back_color)
 
-    #salvar o Qrcode
-    salvar_qrcode(img)
+#     #salvar o Qrcode
+#     salvar_qrcode(img)
 
 
-#Executar o programa diretamente no terminal: python src/exemple.py
-if __name__ == "__main__":
-    main()
+# #Executar o programa diretamente no terminal: python src/exemple.py
+# if __name__ == "__main__":
+#     main()
