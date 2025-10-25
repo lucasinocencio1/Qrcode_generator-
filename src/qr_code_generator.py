@@ -22,6 +22,7 @@ class QrcodeGenerator:
         self.back_color = back_color if back_color is not None else default_back_color
         self.output_folder = output_folder
         self.csv_folder = csv_folder
+        self.png_path = os.path.join(self.output_folder, filename)
         self.df_path = os.path.join(csv_folder, "qrcode_data.csv")
         os.makedirs(self.output_folder, exist_ok=True)
         os.makedirs(self.csv_folder, exist_ok=True)
@@ -49,7 +50,7 @@ class QrcodeGenerator:
             Gera e salva o QR code em um arquivo PNG.
             """
             img = self.criar_qrcode()
-            caminho = os.path.join(self.output_folder, filename)
+            caminho = os.path.join(self.png_path)
             img.save(caminho)
             print(f"✅ QR code salvo em: {caminho}")
             if mostrar:
