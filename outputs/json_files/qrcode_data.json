@@ -26,5 +26,12 @@
         "Security": "WPA",
         "arquivo": "qrcode_png/tete_wifi_qrcode.png",
         "data_criacao": "2025-10-25 15:43:48"
+    },
+    {
+        "SSID": "teste",
+        "Password": "teste",
+        "Security": "WPA",
+        "arquivo": "qrcode_png/teste_wifi_qrcode.png",
+        "data_criacao": "2025-10-25 16:11:08"
     }
 ]
