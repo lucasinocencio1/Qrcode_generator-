@@ -1,6 +1,8 @@
 import os
 from dotenv import load_dotenv
 from qr_code_generator import QrcodeGenerator
+from export_handler import ExportHandler
+from config import csv_folder, json_folder
 
 def main():
     load_dotenv()
@@ -16,15 +18,9 @@ def main():
     # Salvar o QR code e obter o caminho
     caminho_qr = generator.salvar_qrcode()
     
-    # Criar DataFrame com os dados usando o caminho real
-    df = generator.criar_dataframe(caminho_qr)
-    print("📊 DataFrame:")
-    print(df)
-    
-    # Criar JSON com os dados usando o caminho real
-    json_data = generator.criar_json(caminho_qr)
-    print("📄 JSON:")
-    print(json_data)
+    # Exporta resultados (CSV + JSON)
+    exporter = ExportHandler()
+    exporter.registrar(ssid, password, security, caminho_qr)
 
 
 if __name__ == "__main__":
