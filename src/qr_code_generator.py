@@ -1,7 +1,11 @@
 import qrcode # para gerar o Qrcode
 import os # para acessar as variáveis de ambiente
 from dotenv import load_dotenv # para carregar as variáveis de ambiente
-from config import OUTPUT_FOLDER, BACK_COLOR, FILL_COLOR, BORDER, BOX_SIZE # para acessar as configurações
+from config import output_folder
+from config import back_color as default_back_color
+from config import fill_color as default_fill_color
+from config import border as default_border
+from config import box_size as default_box_size
 
 #Criar uma classe para o Qrcode Generator
 class QrcodeGenerator:
@@ -9,11 +13,11 @@ class QrcodeGenerator:
         self.ssid = ssid
         self.password = password
         self.security = security
-        self.box_size = box_size or BOX_SIZE
-        self.border = border or BORDER
-        self.fill_color = fill_color or FILL_COLOR
-        self.back_color = back_color or BACK_COLOR
-        self.output_folder = OUTPUT_FOLDER
+        self.box_size = box_size if box_size is not None else default_box_size
+        self.border = border if border is not None else default_border
+        self.fill_color = fill_color if fill_color is not None else default_fill_color
+        self.back_color = back_color if back_color is not None else default_back_color
+        self.output_folder = output_folder
         os.makedirs(self.output_folder, exist_ok=True)
 
     def criar_qrcode(self):    #função para criar o Qrcode

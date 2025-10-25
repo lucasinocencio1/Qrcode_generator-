@@ -1,8 +1,8 @@
 # configurações do Qrcode para o Qrcode Generator
 
 # Configurações visuais do QR code
-BOX_SIZE: float = 10
-BORDER: float = 4
-FILL_COLOR: str = "black"
-BACK_COLOR: str = "white"
-OUTPUT_FOLDER: str = "qrcode_png"
+box_size: float = 10
+border: float = 4
+fill_color: str = "black"
+back_color: str = "white"
+output_folder: str = "qrcode_png"
