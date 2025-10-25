@@ -1,11 +1,10 @@
 import sys
 import os
-sys.path.append(os.path.join(os.path.dirname(__file__), "src"))
+sys.path.append(os.path.join(os.path.dirname(__file__), "..", "src")) #importar arquivos do src
 import streamlit as st
 from dotenv import load_dotenv
-from src.qr_code_generator import QrcodeGenerator
-from src.export_handler import ExportHandler
-import os
+from qr_code_generator import QrcodeGenerator
+from export_handler import ExportHandler
 
 st.set_page_config(page_title="Gerador de QR Code Wi-Fi", page_icon="📶")
 
