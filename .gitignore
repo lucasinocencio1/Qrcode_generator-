@@ -6,7 +6,6 @@ venv/
 venv
 
 
-#
-.outputs/
-.json/
-.csv/
+# Pastas de saída
+outputs/
+qrcode_png/
