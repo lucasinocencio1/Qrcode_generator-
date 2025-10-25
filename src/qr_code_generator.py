@@ -4,13 +4,10 @@ from dotenv import load_dotenv # para carregar as variáveis de ambiente
 import pandas as pd # para trabalhar com DataFrames
 from datetime import datetime # para trabalhar com datas
 from config import output_folder
-from config import csv_folder
-from config import json_folder
 from config import back_color as default_back_color
 from config import fill_color as default_fill_color
 from config import border as default_border
 from config import box_size as default_box_size
-import json # para trabalhar com JSON
 
 #Criar uma classe para o Qrcode Generator
 class QrcodeGenerator:
