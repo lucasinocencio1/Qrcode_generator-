@@ -23,13 +23,7 @@ class QrcodeGenerator:
         self.fill_color = fill_color if fill_color is not None else default_fill_color
         self.back_color = back_color if back_color is not None else default_back_color
         self.output_folder = output_folder
-        self.csv_folder = csv_folder
-        self.json_folder = json_folder
-        self.df_path = os.path.join(csv_folder, "qrcode_data.csv")
-        self.json_path = os.path.join(json_folder, "qrcode_data.json")
         os.makedirs(self.output_folder, exist_ok=True)
-        os.makedirs(self.csv_folder, exist_ok=True)
-        os.makedirs(self.json_folder, exist_ok=True)
 
     def criar_qrcode(self):    #função para criar o Qrcode
         """
