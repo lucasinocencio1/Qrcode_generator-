@@ -1,3 +1,6 @@
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), "src"))
 import streamlit as st
 from dotenv import load_dotenv
 from src.qr_code_generator import QrcodeGenerator
