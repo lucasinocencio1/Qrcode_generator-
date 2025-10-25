@@ -1,4 +1,4 @@
 qrcode
 Pillow   #gerar imagens do Qrcode
 python-dotenv   #carregar variáveis de ambiente
-os
+pandas   #trabalhar com DataFrames

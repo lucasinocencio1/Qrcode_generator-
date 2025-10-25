@@ -12,8 +12,13 @@ def main():
 
     # Criar instância do gerador
     generator = QrcodeGenerator(ssid, password, security)
-    #Salvar o QR code
-    generator.salvar_qrcode()
+    
+    # Salvar o QR code e obter o caminho
+    caminho_qr = generator.salvar_qrcode()
+    
+    # Criar DataFrame com os dados usando o caminho real
+    df = generator.criar_dataframe(caminho_qr)
+    print(df)
 
 
 if __name__ == "__main__":

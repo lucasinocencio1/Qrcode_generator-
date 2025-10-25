@@ -6,3 +6,4 @@ border: float = 4
 fill_color: str = "black"
 back_color: str = "white"
 output_folder: str = "qrcode_png"
+csv_folder: str = "csv_files"

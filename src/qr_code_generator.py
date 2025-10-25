@@ -1,7 +1,10 @@
 import qrcode # para gerar o Qrcode
 import os # para acessar as variáveis de ambiente
 from dotenv import load_dotenv # para carregar as variáveis de ambiente
+import pandas as pd # para trabalhar com DataFrames
+from datetime import datetime # para trabalhar com datas
 from config import output_folder
+from config import csv_folder
 from config import back_color as default_back_color
 from config import fill_color as default_fill_color
 from config import border as default_border
@@ -18,7 +21,10 @@ class QrcodeGenerator:
         self.fill_color = fill_color if fill_color is not None else default_fill_color
         self.back_color = back_color if back_color is not None else default_back_color
         self.output_folder = output_folder
+        self.csv_folder = csv_folder
+        self.df_path = os.path.join(csv_folder, "qrcode_data.csv")
         os.makedirs(self.output_folder, exist_ok=True)
+        os.makedirs(self.csv_folder, exist_ok=True)
 
     def criar_qrcode(self):    #função para criar o Qrcode
         """
@@ -48,3 +54,29 @@ class QrcodeGenerator:
             print(f"✅ QR code salvo em: {caminho}")
             if mostrar:
                 img.show()
+            return caminho  # Retorna o caminho do arquivo salvo
+
+
+    def criar_dataframe(self, caminho_arquivo: str):
+        """
+        Cria um DataFrame com os dados do QR code
+        """
+            
+        dados = {
+            "SSID": [self.ssid],
+            "Password": [self.password],
+            "Security": [self.security],
+            "arquivo": [caminho_arquivo],
+            "data_criacao": [datetime.now().strftime("%Y-%m-%d %H:%M:%S")]
+        }
+        
+        novo_df = pd.DataFrame(dados)
+        
+        if os.path.exists(self.df_path):
+            df_antigo = pd.read_csv(self.df_path)
+            df_final = pd.concat([df_antigo, novo_df], ignore_index=True)
+        else:
+            df_final = novo_df
+
+        df_final.to_csv(self.df_path, index=False)
+        return novo_df
