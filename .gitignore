@@ -10,5 +10,5 @@ venv
 outputs/
 
 # Arquivos de saída
-*.json
-*.csv
+.json
+.csv
