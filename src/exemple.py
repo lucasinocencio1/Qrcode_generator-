@@ -20,6 +20,24 @@ def criar_qrcode(ssid, password, security, box_size, border, fill_color, back_co
     img = qr.make_image(fill_color=fill_color, back_color=back_color)
     return img
 
+def salvar_qrcode(img):
+   """
+   Essa função cria o Qrcode e salva na pasta de destino
+   """
+   #path para pasta de destino
+   path_destino = "qrcode_png"
+   os.makedirs(path_destino, exist_ok=True)
+
+   #path completo par o arquivo
+   caminho_arquivo = os.path.join(path_destino, "qrcode.png") #salar na pasta qrcode_png
+
+   #salvar o Qrcode  
+   img.save(caminho_arquivo)
+   print(f"QR code salvo como '{caminho_arquivo}'")
+   img.show() #mostrar o Qrcode na tela
+
+
+
 def main():
     load_dotenv()
     
@@ -34,13 +52,12 @@ def main():
     fill_color = "black"    # Cor dos quadrados
     back_color = "white"    # Cor de fundo
     
-    # Criar e salvar o QR code
+    # Criar o Qrcode
     img = criar_qrcode(ssid, password, security, box_size, border, fill_color, back_color)
-    img.save("qrcode.png")
-    print("QR code salvo como 'qrcode.png'")
-    
-    # Mostrar na tela
-    img.show()
+
+    #salvar o Qrcode
+    salvar_qrcode(img)
+
 
 #Executar o programa diretamente no terminal: python src/exemple.py
 if __name__ == "__main__":
